@@ -1,0 +1,70 @@
+
+        <p-dialog [(visible)]="editPaiementTagDialog" [style]="{width: '70vw'}"
+                header="Paiement tag" [modal]="true"
+                styleClass="p-fluid">
+
+            <ng-template pTemplate="content">
+                <p-tabView>
+                    <p-tabPanel header="Paiement tag">
+                        <div class="p-grid">
+
+                                        <div class="p-field p-col-12 p-md-5">
+                                            <label for="1">Paiement</label>
+                                            <p-dropdown [options]="paiements" [(ngModel)]="selectedPaiementTag.paiementVo"
+                                                    id="1" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="reference"
+                                                    placeholder="Paiement">
+                                            </p-dropdown>
+                                        </div>
+                                        <div class="p-field p-col-12 p-md-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatepaiement('paiement')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-5">
+                                            <label for="2">Tag</label>
+                                            <p-dropdown [options]="tags" [(ngModel)]="selectedPaiementTag.tagVo"
+                                                    id="2" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="libelle"
+                                                    placeholder="Tag">
+                                            </p-dropdown>
+                                        </div>
+                                        <div class="p-field p-col-12 p-md-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatetag('tag')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+
+                        </div>
+                    </p-tabPanel>
+
+                </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-grid">
+                        <div>
+                            <button pButton pRipple label="Annuler" icon="pi pi-times"
+                                    class="p-button-text" (click)="hideEditDialog()"></button>
+                        </div>
+                    <div>
+                        <button pButton pRipple label="Valider" icon="pi pi-check"  style="margin:10px" (click)="edit()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+                    <app-paiement-create-chercheur></app-paiement-create-chercheur>
+                    <app-tag-create-chercheur></app-tag-create-chercheur>
+
+
+
+    </p-dialog>
+
+
+

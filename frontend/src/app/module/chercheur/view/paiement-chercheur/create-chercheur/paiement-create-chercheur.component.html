@@ -1,0 +1,160 @@
+        <p-dialog [(visible)]="createPaiementDialog" [style]="{width: '70vw'}"
+                header="Paiement" [modal]="true"
+                styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+
+
+            <ng-template pTemplate="content" >
+                <p-tabView>
+                    <p-tabPanel header="Paiement">
+                        <div class="p-grid">
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="1">Reference<span style="color: red;">*</span></label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Reference"
+                                                   id="1" [(ngModel)]="selectedPaiement.reference"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : validPaiementReference}" required  />
+                                            <small class='p-error' *ngIf='!validPaiementReference'>Reference est obligatoire.</small>
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="2">Date paiement<span style="color: red;">*</span></label>
+                                            <p-calendar id="2"
+                                                        placeholder="Date paiement"  [(ngModel)]="selectedPaiement.datePaiement"
+                                                    dateFormat="{{dateFormat}}" [ngClass]="{'ng-invalid ng-dirty' : validPaiementDatePaiement}" required  >
+                                            </p-calendar>
+                                            <small class='p-error' *ngIf='!validPaiementDatePaiement'>DatePaiement est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="3">Montant<span style="color: red;">*</span></label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="3"
+                                                           placeholder="Montant"
+                                                    [(ngModel)]="selectedPaiement.montant" [ngClass]="{'ng-invalid ng-dirty' : validPaiementMontant}" required  >
+                                            </p-inputNumber>
+                                            <small class='p-error' *ngIf='!validPaiementMontant'>Montant est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-11 p-md-5">
+                                            <label for="4">Commande</label>
+                                            <p-dropdown [options]="commandes" [(ngModel)]="selectedPaiement.commandeVo"
+                                                    id="4" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="reference"
+                                                    placeholder="Commande"  >
+                                            </p-dropdown>
+                                            
+                                        </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatecommande('commande')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                                    <div class="p-field p-col-12  p-md-6">
+                                        <label>Tag</label>
+                                        <p-multiSelect [options]="paiementTagsVo" [(ngModel)]="selectedPaiement.paiementTagsVo" defaultLabel="Select un tag" optionLabel="libelle"  display="chip"></p-multiSelect>
+                                    </div>
+                        </div>
+                    </p-tabPanel>
+                    <p-tabPanel header="Paiement details">
+                                   <p-tabView>
+                                    <p-tabPanel header="Création">
+                                <div class="p-grid">
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="1">Reference<span style="color: red;">*</span></label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Reference"
+                                                           id="1" [(ngModel)]="selectedPaiementDetails.reference"
+                                                           autofocus  [ngClass]="{'ng-invalid ng-dirty' : validPaiementDetailReference}" required  >
+                                                    <small class='p-error' *ngIf='!validPaiementDetailReference'>Reference est obligatoire.</small>
+                                                </div>
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Client</label>
+                                                        <p-dropdown [options]="clients" [(ngModel)]="selectedPaiementDetails.clientVo"
+                                                                id="2"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="cin"
+                                                                placeholder="Client"  
+                                                        >
+                                                        </p-dropdown>
+                                                        
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreateclient('client')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="3">Pourcentage</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="pourcentage"
+                                                                   placeholder="Pourcentage"  
+                                                            [(ngModel)]="selectedPaiementDetails.pourcentage"></p-inputNumber>
+                                                    
+                                                </div>
+                                          <div class="p-field p-col-12 p-md-1">
+                                              <button pButton pRipple type="button" icon="pi pi-plus" class="p-mt-4"
+                                                    label="OK" (click)="addPaiementDetails()">
+                                              </button>
+                                          </div>
+                                </div>
+                                </p-tabPanel>
+                                <p-tabPanel header="Liste">
+                                    <div class="card">
+                                        <p-table [value]="selectedPaiement.paiementDetailsVo" [scrollable]="true"
+                                                scrollHeight="200px">
+                                            <ng-template pTemplate="header">
+                                                <tr>
+                                                                <th>Reference</th>
+                                                                <th>Client</th>
+                                                                <th>Pourcentage</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </ng-template>
+                                            <ng-template pTemplate="body" let-p>
+                                                <tr>
+                                                                <td>{{p.reference}}</td>
+
+                                                            <td>{{p.clientVo?.cin}}</td>
+                                                                <td>{{p.pourcentage}}</td>
+
+                                                    <td>
+                                                        <button (click)="deletePaiementDetails(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger">
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </ng-template>
+                                        </p-table>
+                                    </div>
+
+                                </p-tabPanel>
+                                </p-tabView>
+                            </p-tabPanel>
+
+
+                </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-grid">
+                        <div>
+                            <button pButton pRipple label="Annuler" icon="pi pi-times"
+                                    class="p-button-text" (click)="hideCreateDialog()"></button>
+                        </div>
+                    <div>
+                        <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px" (click)="save()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+                    <app-commande-create-chercheur></app-commande-create-chercheur>
+
+                            <app-client-create-chercheur></app-client-create-chercheur>
+                            <app-tag-create-chercheur></app-tag-create-chercheur>
+
+    </p-dialog>
