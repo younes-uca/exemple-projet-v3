@@ -27,6 +27,16 @@
                                                     [ngClass]="{'ng-invalid ng-dirty' : validTagLibelle}" required  />
                                             <small class='p-error' *ngIf='!validTagLibelle'>Libelle est obligatoire.</small>
                                         </div>
+<!--                  /////////////////////////////////////////////////////////////////////////////////          -->
+                                    <div class="p-field p-col-12 p-md-6">
+                                            <label for="2">Username<span style="color: red;">*</span></label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="username"
+                                                   id="6" [(ngModel)]="selectedTag.username"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : validTagLibelle}" />
+<!--                                            <small class='p-error' *ngIf='!validTagLibelle'>Libelle est obligatoire.</small>-->
+                                        </div>
+ <!--                  /////////////////////////////////////////////////////////////////////////////////          -->
 
 
 

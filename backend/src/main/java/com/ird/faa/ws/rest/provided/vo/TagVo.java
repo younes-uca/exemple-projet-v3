@@ -15,6 +15,9 @@ public class TagVo {
     private String dateCreation ;
 
 
+    private String username ;
+
+
             private String dateArchivageMax ;
             private String dateArchivageMin ;
             private String dateCreationMax ;
@@ -102,7 +105,11 @@ public class TagVo {
             this.dateCreationMin = dateCreationMin;
             }
 
+    public String getUsername() {
+        return username;
+    }
 
-
-
-            }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+}

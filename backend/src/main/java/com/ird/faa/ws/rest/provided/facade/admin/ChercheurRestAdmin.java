@@ -24,12 +24,17 @@ import com.ird.faa.ws.rest.provided.vo.ChercheurVo;
 @RequestMapping("api/admin/chercheur")
 public class ChercheurRestAdmin {
 
-@Autowired
+    @Autowired
 private ChercheurAdminService chercheurService;
 
 @Autowired
 private ChercheurConverter chercheurConverter;
 
+    @ApiOperation("Finds chercheur by id")
+    @GetMapping("/username/{username}")
+    public ChercheurVo findByUsername(@PathVariable String username) {
+        return chercheurConverter.toVo(chercheurService.findByUsername(username));
+    }
 
             @ApiOperation("Updates the specified  chercheur")
             @PutMapping("/")

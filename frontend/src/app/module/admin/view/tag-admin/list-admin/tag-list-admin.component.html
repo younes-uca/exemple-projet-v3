@@ -4,8 +4,8 @@
         <div class="card">
             <p-toolbar styleClass="p-mb-4">
                 <ng-template pTemplate="left">
-                                            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
-                                (click)="openCreateTag('tag')"></button>
+                    <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                            (click)="openCreateTag('tag')"></button>
 
 
                     <button pButton pRipple label="Recherche"
@@ -15,7 +15,8 @@
                 </ng-template>
                 <ng-template pTemplate="right">
                     <div class="flex">
-                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
+                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help"
+                                       [model]="excelPdfButons"></p-splitButton>
                     </div>
                 </ng-template>
 
@@ -25,22 +26,22 @@
                 <div class="align-form-search">
                                 <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                                     <input class="p-mr-2" pInputText id="1"
-                                           type="text"  [(ngModel)]="searchTag.reference">
+                                           type="text" [(ngModel)]="searchTag.reference">
                                     <label for="1">Reference</label>
                                 </span>
-                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                                     <input class="p-mr-2" pInputText id="2"
-                                           type="text"  [(ngModel)]="searchTag.libelle">
+                                           type="text" [(ngModel)]="searchTag.libelle">
                                     <label for="2">Libelle</label>
                                 </span>
-                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                    <p-dropdown  id="3" [options]="yesOrNoArchive" [(ngModel)]="searchTag.archive"
-                                            [filter]="false" [showClear]="true"  placeholder="Archive"
-                                                 optionLabel="label" optionValue="value">
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown id="3" [options]="yesOrNoArchive" [(ngModel)]="searchTag.archive"
+                                                [filter]="false" [showClear]="true" placeholder="Archive"
+                                                optionLabel="label" optionValue="value">
                                     </p-dropdown>
                                 </span>
 
-                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                             <p-calendar
                                     class="p-mr-2" [(ngModel)]="searchTag.dateArchivageMin"
                                     id="4-1"
@@ -48,7 +49,7 @@
                             <label for="4-1">Date archivage Min</label>
                         </span>
 
-                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                             <p-calendar
                                     class="p-mr-2" [(ngModel)]="searchTag.dateArchivageMax"
                                     id="4-2"
@@ -57,7 +58,7 @@
                         </span>
 
 
-                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                             <p-calendar
                                     class="p-mr-2" [(ngModel)]="searchTag.dateCreationMin"
                                     id="5-1"
@@ -65,7 +66,7 @@
                             <label for="5-1">Date creation Min</label>
                         </span>
 
-                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                             <p-calendar
                                     class="p-mr-2" [(ngModel)]="searchTag.dateCreationMax"
                                     id="5-2"
@@ -83,16 +84,18 @@
 
 
             <p-table #dt [value]="tags" [columns]="cols" [rows]="4" [paginator]="true"
-                    [globalFilterFields]="['reference', 'libelle', 'archive', 'dateArchivage', 'dateCreation']" [(selection)]="selectedTag"
-                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
-                                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-                    [showCurrentPageReport]="true">
+                     [globalFilterFields]="['reference', 'libelle', 'archive', 'dateArchivage', 'dateCreation']"
+                     [(selection)]="selectedTag"
+                     [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                     [showCurrentPageReport]="true">
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
                         <h5 class="p-m-0">Liste des Tags</h5>
                         <span class="p-input-icon-left">
                             <i class="pi pi-search"></i>
-                            <input pInputText type="text" placeholder="Search..." (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                            <input pInputText type="text" placeholder="Search..."
+                                   (input)="dt.filterGlobal($event.target.value, 'contains')"/>
                         </span>
                     </div>
                 </ng-template>
@@ -102,54 +105,45 @@
                             <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                         </th>
 
-                                
-                                <th pSortableColumn="reference">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Reference</span>
-                                        <p-sortIcon field="reference"></p-sortIcon>
-                                    </div>
-                                </th>
-                                
+
+                        <th pSortableColumn="reference">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Reference</span>
+                                <p-sortIcon field="reference"></p-sortIcon>
+                            </div>
+                        </th>
 
 
-                                
-                                <th pSortableColumn="libelle">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Libelle</span>
-                                        <p-sortIcon field="libelle"></p-sortIcon>
-                                    </div>
-                                </th>
-                                
+                        <th pSortableColumn="libelle">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Libelle</span>
+                                <p-sortIcon field="libelle"></p-sortIcon>
+                            </div>
+                        </th>
 
 
-                                
-                                <th pSortableColumn="archive">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Archive</span>
-                                        <p-sortIcon field="archive"></p-sortIcon>
-                                    </div>
-                                </th>
-                                
+                        <th pSortableColumn="archive">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Archive</span>
+                                <p-sortIcon field="archive"></p-sortIcon>
+                            </div>
+                        </th>
 
 
-                                
-                                <th pSortableColumn="dateArchivage">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Date archivage</span>
-                                        <p-sortIcon field="dateArchivage"></p-sortIcon>
-                                    </div>
-                                </th>
-                                
+                        <th pSortableColumn="dateArchivage">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Date archivage</span>
+                                <p-sortIcon field="dateArchivage"></p-sortIcon>
+                            </div>
+                        </th>
 
 
-                                
-                                <th pSortableColumn="dateCreation">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Date creation</span>
-                                        <p-sortIcon field="dateCreation"></p-sortIcon>
-                                    </div>
-                                </th>
-                                
+                        <th pSortableColumn="dateCreation">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Date creation</span>
+                                <p-sortIcon field="dateCreation"></p-sortIcon>
+                            </div>
+                        </th>
 
 
                         <th>Actions</th>
@@ -160,27 +154,22 @@
                         <td>
                             <p-tableCheckbox [value]="tag"></p-tableCheckbox>
                         </td>
-                            
-                                 <td>{{tag.reference}}</td>
-                            
 
-                            
-                                 <td>{{tag.libelle}}</td>
-                            
+                        <td>{{tag.reference}}</td>
 
-                            
-                                <td><i *ngIf="tag.archive" class="pi pi-check checked-toogle"></i>
-                                    <i *ngIf="!tag.archive" class="pi pi-times unchecked-toogle"></i>
-                                </td>
-                            
 
-                            
-                                <td>{{tag.dateArchivage | date:'dd-M-yyyy' }}</td>
-                            
+                        <td>{{tag.libelle}}</td>
 
-                            
-                                <td>{{tag.dateCreation | date:'dd-M-yyyy' }}</td>
-                            
+
+                        <td><i *ngIf="tag.archive" class="pi pi-check checked-toogle"></i>
+                            <i *ngIf="!tag.archive" class="pi pi-times unchecked-toogle"></i>
+                        </td>
+
+
+                        <td>{{tag.dateArchivage | date:'dd-M-yyyy' }}</td>
+
+
+                        <td>{{tag.dateCreation | date:'dd-M-yyyy' }}</td>
 
 
                         <td>
@@ -189,13 +178,16 @@
                                     (click)="editTag(tag)"></button>
                             <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
                                     (click)="viewTag(tag)"></button>
-                            <button *ngIf="!tag.archive" pButton pRipple icon="pi pi-calendar-minus" class="p-button-rounded p-button-help p-mr-2"
+                            <button *ngIf="!tag.archive" pButton pRipple icon="pi pi-calendar-minus"
+                                    class="p-button-rounded p-button-help p-mr-2"
                                     (click)="archiverTag(tag)"></button>
 
-                            <button *ngIf="tag.archive" pButton pRipple icon="pi pi-calendar-plus" class="p-button-rounded p-button-secondary p-mr-2"
+                            <button *ngIf="tag.archive" pButton pRipple icon="pi pi-calendar-plus"
+                                    class="p-button-rounded p-button-secondary p-mr-2"
                                     (click)="desarchiverTag(tag)"></button>
 
-                            <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning"
+                            <button pButton pRipple icon="pi pi-copy"
+                                    class="p-button-rounded p-button-raised p-button-warning"
                                     (click)="duplicateTag(tag)"></button>
                         </td>
                     </tr>
@@ -213,6 +205,7 @@
         <app-tag-create-admin></app-tag-create-admin>
         <app-tag-edit-admin></app-tag-edit-admin>
         <app-tag-view-admin></app-tag-view-admin>
+<!--        <app-chercheur-view-admin></app-chercheur-view-admin>-->
         <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
     </div>
 </div>

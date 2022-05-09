@@ -29,6 +29,10 @@ private Long id;
             @JsonFormat(pattern="yyyy-MM-dd")
             @Temporal(TemporalType.DATE)
             private Date dateArchivage ;
+
+
+    private String username;
+
             @JsonFormat(pattern="yyyy-MM-dd")
             @Temporal(TemporalType.DATE)
             private Date dateCreation ;
@@ -39,6 +43,13 @@ public Tag(){
 super();
 }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
             public Long getId(){
             return this.id;

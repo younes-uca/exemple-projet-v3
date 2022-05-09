@@ -21,7 +21,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import javax.persistence.Table;
 
 
 @Entity

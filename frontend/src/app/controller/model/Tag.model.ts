@@ -10,9 +10,10 @@ export class TagVo {
     public archive: null | boolean;
     public dateArchivage: Date;
     public dateCreation: Date;
-                public dateArchivageMax: string ;
+    public username: string;
+
+    public dateArchivageMax: string ;
                 public dateArchivageMin: string ;
                 public dateCreationMax: string ;
                 public dateCreationMin: string ;
-
 }

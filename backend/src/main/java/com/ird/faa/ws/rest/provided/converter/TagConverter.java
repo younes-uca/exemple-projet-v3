@@ -35,6 +35,9 @@ Tag item = new Tag();
         if(StringUtil.isNotEmpty(vo.getDateCreation()))
         item.setDateCreation(DateUtil.parse(vo.getDateCreation()));
 
+        if(StringUtil.isNotEmpty(vo.getUsername()))
+        item.setUsername(vo.getUsername());
+        
 
 return item;
 }
@@ -59,8 +62,12 @@ TagVo vo = new TagVo();
         vo.setArchive(item.getArchive());
         if(item.getDateArchivage()!=null)
         vo.setDateArchivage(DateUtil.formateDate(item.getDateArchivage()));
+
         if(item.getDateCreation()!=null)
         vo.setDateCreation(DateUtil.formateDate(item.getDateCreation()));
+
+        if(item.getUsername()!=null)
+        vo.setUsername(item.getUsername());
 
 return vo;
 }

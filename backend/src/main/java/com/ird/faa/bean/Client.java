@@ -12,7 +12,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "client")
-public class Client    implements Archivable  {
+public class Client implements Archivable  {
 
 @Id
     @SequenceGenerator(name="client_seq",sequenceName="client_seq",
