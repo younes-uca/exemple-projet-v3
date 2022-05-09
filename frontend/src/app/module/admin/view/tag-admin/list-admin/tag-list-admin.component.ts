@@ -91,7 +91,6 @@ export class TagListAdminComponent implements OnInit {
 
     }
 
-
     public async viewTag(tag: TagVo) {
         const isPermistted = await this.roleService.isPermitted('Tag', 'view');
         if (isPermistted) {
@@ -100,11 +99,7 @@ export class TagListAdminComponent implements OnInit {
                 this.selectedTag.dateArchivage = new Date(tag.dateArchivage);
                 this.selectedTag.dateCreation = new Date(tag.dateCreation);
                 this.viewTagDialog = true;
-            });
-            this.chercheurService.findByUsername(tag).subscribe(data => {
-                this.chercheurVo1 = data;
-            });
-            }
+            });}
         else {
                 this.messageService.add({
                     severity: 'error', summary: 'erreur', detail: 'problème d\'autorisation'

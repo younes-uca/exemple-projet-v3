@@ -18,25 +18,47 @@ import {ChercheurService} from '../../../../../controller/service/Chercheur.serv
 })
 export class TagViewAdminComponent implements OnInit {
 
+    _selectedChercheur: ChercheurVo;
     constructor(private datePipe: DatePipe, private tagService: TagService
-        , private roleService: RoleService
-        , private messageService: MessageService
-        , private router: Router
-        , private chercheurService: ChercheurService
+        ,       private roleService: RoleService
+        ,       private messageService: MessageService
+        ,       private router: Router
+        ,       private chercheurService: ChercheurService
     ) {
     }
 
 // methods
     ngOnInit(): void {
     }
-
-
+    //    Pour afficher le dialog de Chercheur ou Non
     get hideTagChercheur(): boolean {
         return this.selectedTag.username != null;
     }
 
+    //    des le click on telecharge les donnes du chercheur
+
+    public async findChercheur(tag: TagVo) {
+        const isPermistted = await this.roleService.isPermitted('Chercheur', 'view');
+        if (isPermistted) {
+            this.chercheurService.findByUsername(tag).subscribe(data => {
+                this.selectedChercheur = data;
+            });
+        } else {
+            this.messageService.add({
+                severity: 'error', summary: 'erreur', detail: 'problème d\'autorisation'
+            });
+        }
+    }
+
     get selectedChercheur(): ChercheurVo {
-        return this.chercheurService.selectedChercheur;
+        if (this._selectedChercheur == null){
+            this._selectedChercheur = new ChercheurVo();
+        }
+        return this._selectedChercheur;
+    }
+
+    set selectedChercheur(value: ChercheurVo) {
+        this._selectedChercheur = value;
     }
 
 
@@ -73,4 +95,6 @@ export class TagViewAdminComponent implements OnInit {
     get dateFormatColumn() {
         return environment.dateFormatList;
     }
+
+
 }

@@ -58,7 +58,7 @@
                 </div>
             </p-tabPanel>
 <!-- *ngIf="hideTageChercheur"-->
-            <p-tabPanel header="Chercheur" *ngIf="hideTagChercheur">
+            <p-tabPanel header="Chercheur" *ngIf="hideTagChercheur" (click)="findChercheur(selectedTag)">
                 <div class="p-grid">
 
                     <div class="p-field p-col-12 p-md-3">

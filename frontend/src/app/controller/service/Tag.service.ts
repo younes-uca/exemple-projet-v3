@@ -14,18 +14,6 @@ import {ChercheurVo} from '../model/Chercheur.model';
     providedIn: 'root'
 })
 export class TagService {
-    private API = '';
-
-    constructor(private http: HttpClient, private roleService: RoleService) {
-        this.role$ = this.roleService.role$;
-        this.role$.subscribe(role => {
-            this.API = environment.apiUrl + role.toLowerCase() + '/tag/';
-        });
-    }
-
-    private _selectedChercheur: ChercheurVo;
-
-
     private _tags: Array<TagVo>;
     private _selectedTag: TagVo;
     private _tagSelections: Array<TagVo>;
@@ -36,6 +24,15 @@ export class TagService {
     public editTag$ = new BehaviorSubject<boolean>(false);
     private role$: Observable<string>;
     private _searchTag: TagVo;
+
+    private API = '';
+
+    constructor(private http: HttpClient, private roleService: RoleService) {
+        this.role$ = this.roleService.role$;
+        this.role$.subscribe(role => {
+            this.API = environment.apiUrl + role.toLowerCase() + '/tag/';
+        });
+    }
 
     // methods
     public archiver(tag: TagVo): Observable<TagVo> {
